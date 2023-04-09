@@ -3,6 +3,6 @@ var router = express.Router();
 
 const indexController = require('../controllers/controllerProfile')
 
-router.get('/',profile.index );
+router.get('/',indexController.index );
 
 module.exports = router;
