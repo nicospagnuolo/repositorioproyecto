@@ -12,6 +12,33 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+const productsRouter = require('./routes/productos');
+app.use('/productos', productsRouter);
+const headerLogeadoRouter = require('./routes/header-logeado');
+const homeRouter = require('./routes/home');
+const indexRouter = require('./routes/index');
+const loginRouter = require('./routes/login');
+const productaddRouter = require('./routes/product-add');
+const productRouter = require('./routes/products');
+const profileeditRouter = require('./routes/profile-add');
+const profileRouter = require('./routes/profile');
+const registerRouter = require('./routes/register');
+const searchresultsRouter = require('./routes/search-result');
+
+app.use('/headerLogeado', headerLogeadoRouter);
+app.use('/home', homeRouter);
+app.use('index', indexRouter);
+app.use('/login', loginRouter);
+app.use('/product-add', productaddRouter);
+app.use('/product', productRouter);
+app.use('/profile-edit', profileeditRouter);
+app.use('/profile', profileRouter);
+app.use('/register', registerRouter);
+app.use('/search-results', searchresultsRouter);
+
+
+
+
 
 app.use(logger('dev'));
 app.use(express.json());
