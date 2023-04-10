@@ -6,7 +6,7 @@ const indexController = require('../controllers/users')
   router.get('/show',indexController.show );
   router.get('/edit',indexController.edit );
   router.get('/profile',indexController.index );
-  router.get('/create',indexController.create );
+  router.get('/register',indexController.register );
 ;
 
 module.exports = router

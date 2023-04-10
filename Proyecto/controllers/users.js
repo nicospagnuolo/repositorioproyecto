@@ -8,7 +8,7 @@ edit: function (req, res) {
 show:function (req, res) {
    	return res.render('login');
 },
-create:function (req, res) {
+register:function (req, res) {
     return res.render('register');
 },
 
