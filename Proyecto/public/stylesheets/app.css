@@ -27,9 +27,11 @@ body {
 }
 
 body {
-  font-family: var(--base-font-family);
-  font-weight: 300;
-  background-color: var(--light-gray);
+  padding: 50px;
+  font-size: 14px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  background-color: #666666;
 }
 
 ul,
