@@ -7,7 +7,7 @@ const controlador = {
 	results:function (req, res) {
 	return res.render('results');
 },
-	create:function (req, res) {
+	productadd:function (req, res) {
 	return res.render('product-add');
 },
 

@@ -4,7 +4,7 @@ var router = express.Router();
 const indexController = require('../controllers/controllerProduct')
 
 router.get('/',indexController.index );
-router.get('/product-add',indexController.create );
+router.get('/product-add',indexController.productadd );
 router.get('/results',indexController.results );
 
 
