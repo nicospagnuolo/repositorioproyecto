@@ -1,9 +1,9 @@
 const controlador = {
 	index: function (req, res) {
-   	return res.render('index de productos');
+   	return res.render('index');
 },
-show:function (req, res) {
-	return res.render('home');
+results:function (req, res) {
+	return res.render('results');
 },
 };
 
