@@ -10,4 +10,4 @@ router.get('/', function(req, res, next) {
   router.get('/create',indexController.create );
 });
 
-module.exports = router;
+module.exports = router
