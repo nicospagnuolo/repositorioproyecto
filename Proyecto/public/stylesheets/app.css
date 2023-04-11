@@ -29,9 +29,9 @@ body {
 body {
   padding: 50px;
   font-size: 14px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-weight: bold;
-  background-color: #090000;
+  background-color: #753b3b;
 }
 
 ul,
@@ -70,7 +70,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: var(--yellow);
+  background-color: rgb(153, 130, 130);
 }
 
 .main-header_home-link,
@@ -115,7 +115,7 @@ hr {
 /*====== Main Navbar ======*/
 .btn-toggle-navbar {
   background-color: var(--dark-blue);
-  color: #ffffff;
+  color: #190707;
   font-size: 1.5em;
   border: none;
   border-radius: 4px;
@@ -156,7 +156,7 @@ hr {
 
 /*====== Banner ======*/
 .banner {
-  background-image: url(/images/img-home-banner.jpg);
+  background-image: url(/Proyecto/public/images/Brown\ Automotive\ Car\ \(Banner\ \(Landscape\)\).png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
