@@ -8,4 +8,4 @@ const indexController = require('../controllers/users')
   router.get('/register',indexController.register );
 ;
 
-module.exports = router
+module.exports = router;
