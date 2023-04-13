@@ -180,6 +180,10 @@ hr {
   background-size: cover;
   background-position: center center;
   height: 100px;
+  max-width: 75%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
