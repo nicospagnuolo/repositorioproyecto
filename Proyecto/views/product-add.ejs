@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="./images/logo-mercado-liebre.jpg" />
+	<link width="" rel="shortcut icon" href="/images/logo-mercado-liebre.jpg" />
 
 	<title> Mercado Liebre Argentina</title>
 	<!-- Font Awesome Stylesheet -->
@@ -19,7 +19,7 @@
 <body>
 	<!-- Header -->
 	<header class="main-header">
-		<%- include('./partials/headerLogeado') %>
+		<%- include('./partials/header')%>
 	</header>
 	<!-- /Header -->
 
@@ -30,17 +30,34 @@
 				<h2 class="products-title">Agregar productos</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario para agregar prodcutos al catálogo. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos. <br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
+			<h2 class="col-12">
+				<form action="procesar_formulario.php" method="post">
+					<p>Elige una producto:</p>
+					<input type="radio" name="opcion" value="opcion1" id="opcion1">
+					<label for="opcion1">Ford Mustang</label><br>
+					<input type="radio" name="opcion" value="opcion2" id="opcion2">
+					<label for="opcion2">Lamborghini</label><br>
+					<input type="radio" name="opcion" value="opcion3" id="opcion3">
+					<label for="opcion3">Cammaro</label><br>
+					<input type="radio" name="opcion" value="opcion4" id="opcion4">
+					<label for="opcion4">Corvete</label><br>
+					<input type="radio" name="opcion" value="opcion4" id="opcion4">
+					<label for="opcion4">Ferrari</label><br>
+					<input type="radio" name="opcion" value="opcion4" id="opcion4">
+					<label for="opcion4">Pagani</label><br>
+					<input type="radio" name="opcion" value="opcion4" id="opcion4">
+					<label for="opcion4">Mclaren 765</label><br>
+					<input type="radio" name="opcion" value="opcion4" id="opcion4">
+					<label for="opcion4">Bugatti</label><br>
+					<br>
+					<input type="submit" value="Agregar">
+				</form>
 			</h2>
 
 
 	<!-- footer -->
 	<footer class="main-footer">
-		<%- include('/partials/footer')  %>
+		<%- include('./partials/footer')  %>
 	</footer>
 	<!-- /footer -->
 </body>
