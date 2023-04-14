@@ -179,17 +179,17 @@ hr {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 20px ;
+   ;
 
   
   
 }
 
 .banner img {
-  max-width: 75%;
+  max-width: 95%;
   height: 400px;
   object-fit: contain;
-  margin: 20px ;
+  
   
  
 }
