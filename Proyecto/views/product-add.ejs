@@ -31,19 +31,19 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12">
-				<form>
-					<label for="imagen">Imagen:</label>
-					<input type="file" id="imagen" name="imagen"><br><br>
-			  
-					<label for="nombre">Nombre del producto:</label>
-					<input type="text" id="nombre" name="nombre"><br><br>
-			  
-					<label for="descripcion">Descripción:</label><br>
-					<textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea><br><br>
-			  
-					<label for="fecha">Fecha:</label>
-					<input type="date" id="fecha" name="fecha"><br><br>
-			  
+				<form action="" method="GET"
+					<label for="image">Imagen:</label>
+					<input type="file" id="image" name="image" accept="image/*" required><br><br>
+				
+					<label for="name">Nombre:</label>
+					<input type="text" id="name" name="name" required><br><br>
+					
+					<label for="description">Descripción:</label>
+					<textarea id="description" name="description" required></textarea><br><br>
+					
+					<label for="date">Fecha:</label>
+					<input type="date" id="date" name="date" required><br><br>
+					
 					<input type="submit" value="Enviar">
 				  </form>
 			</h2>
