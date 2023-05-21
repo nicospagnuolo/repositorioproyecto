@@ -37,19 +37,19 @@ const data={
 }
 ],
 
-comentarios:[{
-    id:'nico',
-    id_usuario:'jero',
-    texto_comentario:'hola muy bueno el auto'
+    comentarios:[{
+        id:'nico',
+        id_usuario:'jero',
+        texto_comentario:'hola muy bueno el auto'
 },{
-    id:'mati',
-    id_usuario:'lucas',
-    texto_comentario:'que buen auto'
+        id:'mati',
+        id_usuario:'lucas',
+        texto_comentario:'que buen auto'
 },{
-    id:'carlos',
-    id_usuario:'pepe',
-    texto_comentario:'muy bueno me encanto'
-}],
-
+        id:'carlos',
+        id_usuario:'pepe',
+        texto_comentario:'muy bueno me encanto'
+    }
+],
 }
 module.exports = data;
