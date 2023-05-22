@@ -4,11 +4,11 @@ const data = require('../data/data')
 const productsController ={
      
   detalle: function(req,res){
-   res.render('product' , {comments: data.comentarios} )
+   res.render("product", {comments: data.comentarios} )
 
   },
   add: function (req,res) {
-    res.render('product-add', {user:data.users})
+    res.render("product-add", {user:data.users})
   }
 }
 

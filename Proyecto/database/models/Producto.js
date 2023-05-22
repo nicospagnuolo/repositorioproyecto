@@ -26,6 +26,5 @@ Usuario.associate=function(models,Productos){
     Productos.belongsTo(models.Usuarios,{
         as : "Usuarios",
         foreignKey :"Usuario_id"
-
     })
 }
