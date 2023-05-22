@@ -40,3 +40,15 @@ Producto.associate=function(models,Usuarios){
 
     })
 }
+Usuario.associate=function(models){
+    Usuarios.belongsToMany(models,Comentario,{
+        as:'comentarios',
+        through:'comentario_id',
+        foreignKey:'usuario_id',
+        otherKey:'comentario_id',
+        timestamps: false,
+
+    })
+  
+
+}
