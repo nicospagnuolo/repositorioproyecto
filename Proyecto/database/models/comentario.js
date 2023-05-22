@@ -34,15 +34,3 @@ Comentario.associate=function(models){
     })
   
 }
-Comentario.associate=function(models){
-    Comentarios.belongsToMany(models,Usuarios,{
-        as:'usuarios',
-        through:'comentario_id',
-        foreignKey:'comentario_id',
-        otherKey:'usuario_id',
-        timestamps: false,
-
-    })
-  
-
-}
