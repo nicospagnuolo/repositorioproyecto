@@ -1,3 +1,4 @@
+
 const usersController = {
     profile: function(req,res){
         return res.render('profile', {users:data.user, products: data.products})
