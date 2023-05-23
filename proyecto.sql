@@ -1,6 +1,6 @@
-create schema proyecto;
-use proyecto;
-CREATE TABLE usuarios (
+create schema proyecto1;
+use proyecto1;
+CREATE TABLE usuarios1 (
 username VARCHAR(500) NOT NULL,
 email VARCHAR(500) NOT NULL,
 contrasena varchar(100) NOT NULL,
@@ -14,7 +14,9 @@ deletedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 
 
 create table productos (
+imagen VARCHAR(500) NOT NULL,
 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+id_usuario INT NOT NULL,
 nombre_del_producto VARCHAR(500) NOT NULL,
 descrip_producto VARCHAR(1000) NOT NULL,
 claves VARCHAR(500) NOT NULL,
@@ -25,8 +27,11 @@ deletedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 
 create table comentarios(
 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-id_usuario integer NOT null,
+id_producto INT NOT NULL,
+id_usuario INT NOT NULL,
+nombre_usuario VARCHAR(500) NOT NULL,
 texto_comentario VARCHAR(500) NOT NULL,
+claves VARCHAR(500) NOT NULL,
 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 deletedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
