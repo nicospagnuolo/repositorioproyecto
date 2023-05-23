@@ -23,14 +23,3 @@ module.exports = function(sequelize,dataTypes){
     return comentario
 
 }
-Comentario.associate=function(models){
-    Comentarios.belongsToMany(models,Productos,{
-        as:'productos',
-        through:'comentario_id',
-        foreignKey:'comentario_id',
-        otherKey:'producto_id',
-        timestamps: false,
-
-    })
-  
-}

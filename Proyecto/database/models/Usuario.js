@@ -40,4 +40,3 @@ Producto.associate=function(models,Usuarios){
 
     })
 }
-

@@ -1,12 +1,15 @@
 const data = require('../data/data')
-const db = require('../database/models/Producto')
 
-const productsController ={
+
+const productscontroller ={
   index: function(req, res,) {
   },
   detalle: function(req,res){
    return res.render("product", {comments: data.comentarios})
 
+  },
+  add: function (req,res) {
+    return res.render("product-add", {user:data.users})
   },
   findByPk: function(req,res){
     let id =req.params.id;
@@ -21,10 +24,7 @@ const productsController ={
     return res.render("detalle",{data:[data]});
    })
 
-  },
-  add: function (req,res) {
-    res.render("product-add", {user:data.users})
   }
 }
 
-module.exports = productsController;
+module.exports = productscontroller;
