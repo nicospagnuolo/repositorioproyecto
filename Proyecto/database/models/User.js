@@ -1,5 +1,5 @@
 module.exports=function(sequelize,dataTypes){
-    let alias = 'Usuario';
+    let alias = 'User';
     let cols={
         id:{
             autoIncrement:true,
@@ -16,27 +16,36 @@ module.exports=function(sequelize,dataTypes){
         password:{
             type:dataTypes.STRING
         },
+        foto_perfil:{
+            type:dataTypes.STRING
+        },
         fecha_nacimiento:{
             type:dataTypes.DATE
         },
-        dni:{
+        DNI:{
             type:dataTypes.INTEGER
+        },
+        createdAt:{
+            type:dataTypes.DATE,
+            allowNull: true
+        },
+        updatedAt:{
+            type:dataTypes.DATE,
+            allowNull: true
+        },
+        deletedAt:{
+            type:dataTypes.DATE,
+            allowNull: true
         }
 
 
     };
     let config ={
-        tableName:"users",
+        tableName:"usuarios1",
         timestamps: false,
         underscored: true
     }
     let user = sequelize.define(alias,cols,config);
     return user
-}
-Producto.associate=function(models,Usuarios){
-    Usuarios.belongsTo(models.Productos,{
-        as : "Productos",
-        foreignKey :"Producto_id"
+};
 
-    })
-}
