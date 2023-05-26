@@ -3,15 +3,36 @@ module.exports = function(sequelize,dataTypes){
     let cols={
         id:{
             autoIncrement:true,
-            PrimaryKey:true,
+            primaryKey:true,
             type:dataTypes.INTEGER
 
+        },
+        imagen:{
+            type:dataTypes.STRING
+        },
+        id_usuario:{
+            type:dataTypes.INTEGER
         },
         nombre_del_producto:{
             type:dataTypes.STRING
         },
-        descripcion:{
+        descrip_producto:{
             type:dataTypes.STRING
+        },
+        claves:{
+            type:dataTypes.STRING
+        },
+        createdAt:{
+            type:dataTypes.DATE,
+            allowNull: true
+        },
+        updatedAt:{
+            type:dataTypes.DATE,
+            allowNull: true
+        },
+        deletedAt:{
+            type:dataTypes.DATE,
+            allowNull: true
         }
     };
     let config={
@@ -21,10 +42,4 @@ module.exports = function(sequelize,dataTypes){
     }
     let product = sequelize.define(alias,cols,config);
     return product
-}
-Usuario.associate=function(models,Productos){
-    Productos.belongsTo(models.Usuarios,{
-        as : "Usuarios",
-        foreignKey :"Usuario_id"
-    })
 }

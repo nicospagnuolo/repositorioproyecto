@@ -3,7 +3,7 @@ module.exports=function(sequelize,dataTypes){
     let cols={
         id:{
             autoIncrement:true,
-            PrimaryKey:true,
+            primaryKey:true,
             type:dataTypes.INTEGER
 
         },
@@ -22,7 +22,7 @@ module.exports=function(sequelize,dataTypes){
         fecha_nacimiento:{
             type:dataTypes.DATE
         },
-        DNI:{
+        dni:{
             type:dataTypes.INTEGER
         },
         createdAt:{

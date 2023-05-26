@@ -1,4 +1,6 @@
 const bcryptjs = require('bcryptjs')
+const db = require('../database/models');
+const Usuario = db.User
 const usersController = {
     profile: function(req,res){
         return res.render('profile', {users:data.user, products: data.products})
@@ -17,9 +19,10 @@ const usersController = {
             password: passEncriptada,
             foto_perfil: req.body.perfil,
             dni: req.body.dni,
-            fecha: req.body.birthdate
+            fecha_nacimiento: req.body.birthdate
         }
-        res.send(user)
+        Usuario.create(user);
+        res.redirect('/register')
     }
 }
 
