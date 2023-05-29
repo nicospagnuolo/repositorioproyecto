@@ -1,4 +1,7 @@
-const data = require('../data/data')
+const data = require('../data/data');
+const db = require('../database/models');
+const producto = db.Producto
+const{Op} = require('sequelize');
 
 
 const productscontroller ={
@@ -19,9 +22,9 @@ const productscontroller ={
         {association:"usuarios"}
       ]
     }
-   Producto.findByPk(id,relaciones)
+   producto.findByPk(id,relaciones)
    .then(function(data){
-    return res.render("detalle",{data:[data]});
+    return res.render("product",{data});
    })
 
   }

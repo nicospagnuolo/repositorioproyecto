@@ -12,17 +12,23 @@ const usersController = {
         res.render('register')
     },
     store:(req, res)=>{
-        let passEncriptada = bcryptjs.hashSync(req.body.password, 12)
-        let user = {
-            username:req.body.username,
-            email:req.body.email,
-            password: passEncriptada,
-            foto_perfil: req.body.perfil,
-            dni: req.body.dni,
-            fecha_nacimiento: req.body.birthdate
+        if (req.body.password.length>3)
+         {  let passEncriptada = bcryptjs.hashSync(req.body.password, 12)
+            let user = {
+                username:req.body.username,
+                email:req.body.email,
+                password: passEncriptada,
+                foto_perfil: req.body.perfil,
+                dni: req.body.dni,
+                fecha_nacimiento: req.body.birthdate
+            }
+            Usuario.create(user);
+            res.redirect('/register')
+            
+        }else{
+           
         }
-        Usuario.create(user);
-        res.redirect('/register')
+
     }
 }
 
