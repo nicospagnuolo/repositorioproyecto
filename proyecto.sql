@@ -4,13 +4,13 @@ CREATE TABLE usuarios1 (
 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 username VARCHAR(500) NOT NULL,
 email VARCHAR(500) NOT NULL,
-contrasena varchar(100) NOT NULL,
+password varchar(100) NOT NULL,
 foto_perfil VARCHAR(500) NOT NULL,
 fecha_nacimiento DATE NOT NULL,
 DNI integer NOT null,
-createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-deletedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+deleted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 
@@ -21,9 +21,9 @@ id_usuario INT NOT NULL,
 nombre_del_producto VARCHAR(500) NOT NULL,
 descrip_producto VARCHAR(1000) NOT NULL,
 claves VARCHAR(500) NOT NULL,
-createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-deletedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+deleted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 create table comentarios(
@@ -33,25 +33,25 @@ id_usuario INT NOT NULL,
 nombre_usuario VARCHAR(500) NOT NULL,
 texto_comentario VARCHAR(500) NOT NULL,
 claves VARCHAR(500) NOT NULL,
-createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-deletedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+deleted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 
-insert into usuarios1(username,email,contrasena,foto_perfil,fecha_nacimiento, DNI)
+insert into usuarios1(username,email,password,foto_perfil,fecha_nacimiento, DNI)
 values('eros123','eros@hotmail.com','eritos','fotoeros','2004/03/04','44990330');
 
-insert into usuarios1(username,email,contrasena,foto_perfil,fecha_nacimiento, DNI)
+insert into usuarios1(username,email,password,foto_perfil,fecha_nacimiento, DNI)
 values('jero123','jero@hotmail.com','jerom', 'fotojero','2010/12/10', '44661731');
 
-insert into usuarios1(username,email,contrasena,foto_perfil,fecha_nacimiento, DNI)
+insert into usuarios1(username,email,password,foto_perfil,fecha_nacimiento, DNI)
 values('nico123','nico@hotmail.com','nick','fotonico','2021/10/17','18412454');
 
-insert into usuarios1(username,email,contrasena,foto_perfil,fecha_nacimiento, DNI)
+insert into usuarios1(username,email,password,foto_perfil,fecha_nacimiento, DNI)
 values('mati123','mati@hotmail.com','matim','fotmati','2005/10/11','17287070');
 
-insert into usuarios1(username,email,contrasena,foto_perfil,fecha_nacimiento, DNI)
+insert into usuarios1(username,email,password,foto_perfil,fecha_nacimiento, DNI)
 values('carlo321','carlos@hotmail.com','carlitos','fotcarlos','2015/09/01','37273894');
 
 
