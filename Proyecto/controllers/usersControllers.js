@@ -26,7 +26,7 @@ const usersController = {
             res.redirect('/register')
             
         }else{
-           
+            alert("La contrasena")
         }
 
     }
