@@ -41,8 +41,12 @@ module.exports = function(sequelize,dataTypes){
     underscored: true
     }
    
+    
     let product = sequelize.define(alias,cols,config);
     return product
+
+    
     
     
 }
+
