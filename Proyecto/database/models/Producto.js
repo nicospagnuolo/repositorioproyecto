@@ -40,13 +40,16 @@ module.exports = function(sequelize,dataTypes){
     timestamps: false,
     underscored: true
     }
-   
-    
-    let product = sequelize.define(alias,cols,config);
+    const product = sequelize.define(alias,cols,config);
+ 
+  
     return product
+    }
+   
+
 
     
     
     
-}
+
 

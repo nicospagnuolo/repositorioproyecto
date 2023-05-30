@@ -45,7 +45,10 @@ module.exports=function(sequelize,dataTypes){
         timestamps: false,
         underscored: true
     }
-    let user = sequelize.define(alias,cols,config);
-    return user
-};
+    const Usuario = sequelize.define(alias,cols,config);
+
+    return Usuario
+    }
+    
+
 
