@@ -19,7 +19,11 @@
 <body>
 	<!-- Header -->
 	<header class="main-header">
-		<%- include('./partials/header')%>
+		<%= if(user != null){
+			include('./partials/headerLogeado')
+		} else {
+			include('./partials/header')
+		} %>
 
 	</header>
 	<!-- /Header -->
