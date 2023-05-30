@@ -23,11 +23,11 @@ store:(req, res) => {
     } else if (req.body.name == "") {
       errors.message = "El campo name está vacío";
       res.locals.errors = errors;
-      res.render("register");
+      res.render("product-add");
     } else if (req.body.description =="") {
       errors.message = "El campo descripcion esta vacio.";
       res.locals.errors = errors;
-      res.render("register");
+      res.render("product-add");
     }  else {
    
 
@@ -39,7 +39,7 @@ store:(req, res) => {
 
     }
     producto.create(product);
-    res.redirect('/product-add')
+    res.redirect('product-add')
     }
   },
   findByPk: function(req,res){

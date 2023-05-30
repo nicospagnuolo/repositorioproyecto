@@ -30,7 +30,7 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12">
-				<form action="" method="post"
+				<form action="" method="post">
 					<label for="image">Imagen:</label>
 					<input type="file" id="image" name="image" accept="image/*" ><br><br>
 				
@@ -38,12 +38,13 @@
 					<input type="text" id="name" name="name" ><br><br>
 					
 					<label for="description">Descripción:</label>
-					<input id="description" name="description" ></input><br><br>
-					
+					<textarea id="description" name="description" ></textarea><br><br>
 				
-					
 					<input type="submit" value="Crear">
 				  </form>
+				  <% if (locals.errors) { %>
+					<p style="color:red"> <%= errors.message %></p>
+				<% } %>
 			</h2>
 
 
