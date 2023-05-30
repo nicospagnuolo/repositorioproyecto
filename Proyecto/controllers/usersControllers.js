@@ -16,15 +16,27 @@ const usersController = {
         if (req.body.username == "") {
           errors.message = "El campo username está vacío";
           res.locals.errors = errors;
-          res.render("/register");
+          res.render("register");
         } else if (req.body.email == "") {
           errors.message = "El campo email está vacío";
           res.locals.errors = errors;
-          res.render("/register");
-        } else if (req.body.password.lenght < 3) {
-          errors.message = "La contraseña debe tener mas de tres caracteres.";
+          res.render("register");
+        } else if (req.body.password =="") {
+          errors.message = "La contraseña debe tener mas de 3 caracteres.";
           res.locals.errors = errors;
-          res.render("/register");
+          res.render("register");
+        } else if (req.body.perfil == "") {
+            errors.message = "El campo foto de perfil está vacío";
+            res.locals.errors = errors;
+            res.render("register");
+        } else if (req.body.birthdate =="") {
+            errors.message = "El campo fecha de nacimiento esta vacio.";
+            res.locals.errors = errors;
+            res.render("register");
+        } else if (req.body.dni =="") {
+            errors.message = "El campo DNI esta vacio.";
+            res.locals.errors = errors;
+            res.render("register");
         } else {
           let criterio = {
             where: [{ email: req.body.email }]
@@ -33,7 +45,7 @@ const usersController = {
             .then(data => {
               errors.message = "El email ya existe!";
               res.locals.errors = errors;
-              res.render("/register");
+              res.render("register");
             }).catch(error => console.log(error))
     
           let passEncriptada = bcryptjs.hashSync(req.body.password, 12);
