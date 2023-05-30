@@ -19,11 +19,8 @@
 <body>
 	<!-- Header -->
 	<header class="main-header">
-		<%= if(user != null){
-			include('./partials/headerLogeado')
-		} else {
-			include('./partials/header')
-		} %>
+		<%- include('./partials/header')%>
+
 
 	</header>
 	<!-- /Header -->
@@ -36,7 +33,7 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12"> <form>
-				<form action="procesar.php" method="GET">
+				<form action="/users/login" method="post">
 					<label for="username">Nombre de usuario:</label>
 					<input type="text" id="username" name="username" required><br><br>
 					

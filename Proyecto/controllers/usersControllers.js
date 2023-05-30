@@ -60,7 +60,41 @@ const usersController = {
         Usuario.create(user);
         res.redirect('/register')
         }
+      },
+      login: (req, res) => {
+        res.render('login')
+      },
+      ingresar: (req, res) => {
+        let errors = {};
+        let info = req.body;
+        let filtro={
+          where:[{email:info.email}]
+        };
+        Usuario.findOne(filtro)
+        .then(result=>{
+          if(result  != ""){
+            let check = bcryptjs.compareSync(info.password, result.password);
+            if(check){
+              req.session.user = result.dataValues;
+              req.locals.user = result.dataValues;
+              if(info.recordar){
+                res.cookie("username",result.dataValues.id,{maxAge:1000 *60 *10})
+              }
+              return res.redirect('/')
+            }
+            else{
+              
+              errors.message = "Contraseña no coincide";
+              res.locals.errors = errors;
+              res.render("register");
+            }
+          }
+        })
+
       }
-}
+    }
+
+  
+
 
 module.exports = usersController;
