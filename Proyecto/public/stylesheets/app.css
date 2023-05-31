@@ -222,7 +222,6 @@ img{
 .product-box_image {
   border-bottom: 1px solid var(--light-gray);
   text-align: center;
-  border: 2px dotted #6c79c7;
     border-radius: 5px;
 }
 
@@ -232,7 +231,6 @@ img{
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  border: 2px dotted #6c79c7;
   border-radius: 5px;
   background-color: #5a1717;
   

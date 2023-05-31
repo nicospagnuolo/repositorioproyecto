@@ -64,37 +64,32 @@ const usersController = {
       login: (req, res) => {
         res.render('login')
       },
-      ingresar: (req, res) => {
+      ingresar: (req, res)=> {
         let errors = {};
         let info = req.body;
-        let filtro={
+        let filtro = {
           where:[{email:info.email}]
         };
         Usuario.findOne(filtro)
         .then(result=>{
-          if(result  != ""){
-            let check = bcryptjs.compareSync(info.password, result.password);
-            if(check){
+          if (result != null) {
+            let check = bcryptjs.compareSync(info.password, result.password)
+            if (check) {
               req.session.user = result.dataValues;
               req.locals.user = result.dataValues;
-              if(info.recordar){
-                res.cookie("username",result.dataValues.id,{maxAge:1000 *60 *10})
+              if (info.recordar) {
+                res.cookie("userId", result.dataValues.id,{maxAge:1000 *60 *10})
               }
               return res.redirect('/')
             }
-            else{
-              
-              errors.message = "Contraseña no coincide";
+            else {
+              errors.message = "La contraseña no concide.";
               res.locals.errors = errors;
-              res.render("register");
+              res.render('register')
             }
           }
         })
-
+        
       }
     }
-
-  
-
-
 module.exports = usersController;
