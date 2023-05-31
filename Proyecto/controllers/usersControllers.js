@@ -68,7 +68,7 @@ const usersController = {
         let errors = {};
         let info = req.body;
         let filtro = {
-          where:[{email:info.email}]
+          where:[{username:info.username}]
         };
         Usuario.findOne(filtro)
         .then(result=>{

@@ -1,5 +1,5 @@
 const data = require('../data/data');
-const db = require('../database/models');
+const db = require('../database/models/Producto');
 const producto = db.Producto
 const{Op} = require('sequelize');
 
@@ -8,13 +8,20 @@ const productscontroller ={
   index: function(req, res,) {
   },
   detalle: function(req,res){
-   return res.render("product", {comments: data.comentarios})
+    let id = req.params.id;
+    for (let i = 0; i < producto; i++) {
+      if(id == producto[i].id){
+        return res.render('product',{id})
+      }
+      
+    }
+  
 
   },
   add:function (req, res) {
     res.render('product-add')
 },
-store:(req, res) => {
+store:function(req, res){
     let errors = {};
     if (req.body.image == "") {
       errors.message = "El campo imagen está vacío";
