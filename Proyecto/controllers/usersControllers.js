@@ -37,12 +37,12 @@ const usersController = {
             errors.message = "El campo DNI esta vacio.";
             res.locals.errors = errors;
             res.render("register");
-        } else {
+        } else  {
           let criterio = {
             where: [{ email: req.body.email }]
           }
           Usuario.findAll(criterio)
-            .then(data => {
+            .then(function(data){
               errors.message = "El email ya existe!";
               res.locals.errors = errors;
               res.render("register");

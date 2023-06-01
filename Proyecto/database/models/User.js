@@ -45,10 +45,23 @@ module.exports=function(sequelize,dataTypes){
         timestamps: false,
         underscored: true
     }
+    User.associate = function(models){
+        Actor.belongsToMany(models,Users,{
+            as:"usuarios",
+            thorugh:"comentarios",
+            primaryKey:"user_id",
+            otherKey:"comentario_id",
+            timestamps:false,
+    })
+    User.associate = function(models){
+        User.hasMany(models.producto,{
+            as:"productos",
+            foreignkey:"producto_id"
+        })
     const Usuario = sequelize.define(alias,cols,config);
 
     return Usuario
     }
     
 
-
+}}
