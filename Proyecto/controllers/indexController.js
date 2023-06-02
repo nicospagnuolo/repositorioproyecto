@@ -1,5 +1,5 @@
 const data = require('../data/data')
-const db = require('../database/models/Producto');
+const db = require('../database/models');
 const producto = db.Producto
 const{Op} = require('sequelize');
 
@@ -18,7 +18,7 @@ const indexController = {
           return res.render('register')
       },
       results: function (req, res){
-          return res.render('search-results',{products: data.products} )
+          return res.render('results')
       }
 }
 
