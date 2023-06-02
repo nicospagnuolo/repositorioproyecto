@@ -1,5 +1,5 @@
 const data = require('../data/data')
-const db = require('../database/models');
+const db = require('../database/models/Producto');
 const producto = db.Producto
 const{Op} = require('sequelize');
 
