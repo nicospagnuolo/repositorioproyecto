@@ -36,16 +36,16 @@ module.exports = function(sequelize,dataTypes){
         }
     };
     let config={
-    tableName:"Producto",
+    tableName:"productos",
     timestamps: false,
     underscored: true
     }
-    const Producto = sequelize.define(alias,cols,config);
+    const productos = sequelize.define(alias,cols,config);
 
  
  
   
-    return Producto
+    return productos
     
 }
 
