@@ -58,7 +58,7 @@ const usersController = {
             fecha_nacimiento: req.body.birthdate
         }
         Usuario.create(user);
-        res.redirect('/register')
+        res.redirect('register')
         }
       },
       login: (req, res) => {
@@ -75,8 +75,8 @@ const usersController = {
           if (result != null) {
             let check = bcryptjs.compareSync(info.password, result.password)
             if (check) {
-              req.session.user = result.dataValues;
-              req.locals.user = result.dataValues;
+              req.session.Usuario = result.dataValues;
+              req.locals.Usuario = result.dataValues;
               if (info.recordar) {
                 res.cookie("userId", result.dataValues.id,{maxAge:1000 *60 *10})
               }
