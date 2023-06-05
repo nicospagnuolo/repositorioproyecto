@@ -1,4 +1,3 @@
-const data = require('../data/data')
 const db = require('../database/models');
 const producto = db.Producto
 const{Op} = require('sequelize');
@@ -6,10 +5,15 @@ const{Op} = require('sequelize');
 const indexController = {
     index : function(req, res) {
         producto.findAll({
+            include:[
+                {association: "usuarios"},
+                {association:"comentarios"},
+            ],
             order:[['created_at', 'DESC']]
         })
         .then(function(data){
           return res.render('index', { data });
+          order:[['created_at', 'DESC']]
       })},
       login: function (req, res){
           return res.render('login')
