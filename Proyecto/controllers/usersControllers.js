@@ -9,7 +9,7 @@ const usersController = {
         return res.render('profile-edit', {user:data.user})
     },
     add:function (req, res) {
-        res.render('register')
+        res.render("register")
     },
     store:(req, res) => {
         let errors = {};
