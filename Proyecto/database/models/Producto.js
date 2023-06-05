@@ -10,7 +10,7 @@ module.exports = function(sequelize,dataTypes){
         imagen:{
             type:dataTypes.STRING
         },
-        id_usuario:{
+        user_id:{
             type:dataTypes.INTEGER
         },
         nombre_del_producto:{
