@@ -51,16 +51,13 @@ store:function(req, res){
   },
   findByPk: function(req,res){
     let id =req.params.id;
-    let relaciones = {
-      include:[
-        {association:"comentarios"},
-        {association:"usuarios"}
-      ]
-    }
-   producto.findByPk(id,relaciones)
+    let criterio = {where:{id:id}}
+    
+   producto.findOne(criterio)
    .then(function(data){
-    return res.render("product",{data});
+    return res.render("product",{data:[data]});
    })
+   .catch(function(err){console.log(err)})
 
   },
 
