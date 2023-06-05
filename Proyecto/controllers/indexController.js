@@ -27,8 +27,10 @@ const indexController = {
             where:[{nombre_del_producto:{[op.like]:"%"+busqueda+"%"}}]
         }
         producto.findAll(criterio)
-        .then(data=>res.send({data}))
-         //return res.render('results')
+        .then(function (data) {
+            return res.render('results', {data:data})
+        })
+         
       }
 }
 

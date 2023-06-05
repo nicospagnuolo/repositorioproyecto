@@ -44,7 +44,7 @@ module.exports = function(sequelize,dataTypes){
     const Producto = sequelize.define(alias,cols,config);
  
    
-    
+    return Producto
 }
 
 

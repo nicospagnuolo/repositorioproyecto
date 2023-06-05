@@ -1,6 +1,5 @@
-const data = require('../data/data');
 const db = require('../database/models/Producto');
-const producto = db.Producto
+const Producto = db.Producto
 const{Op} = require('sequelize');
 
 
@@ -13,10 +12,7 @@ const productscontroller ={
       if(id == producto[i].id){
         return res.render('product',{id})
       }
-      
     }
-  
-
   },
   add:function (req, res) {
     res.render('product-add')
@@ -37,23 +33,20 @@ store:function(req, res){
       res.render("product-add");
     }  else {
    
-
-      
       let product = {
         imagen:req.body.image,
         nombre_del_producto:req.body.name,
         descrip_producto: req.body.description,
-
-    }
-    producto.create(product);
-    res.redirect('product-add')
+      }
+      Producto.create(product);
+      res.redirect('product-add')
     }
   },
   findByPk: function(req,res){
     let id =req.params.id;
     let criterio = {where:{id:id}}
     
-   producto.findOne(criterio)
+   Producto.findOne(criterio)
    .then(function(data){
     return res.render("product",{data:[data]});
    })
