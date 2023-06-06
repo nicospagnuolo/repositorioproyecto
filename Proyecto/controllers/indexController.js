@@ -5,6 +5,7 @@ const op = db.Sequelize.Op;
 const indexController = {
     index : function(req, res) {
         producto.findAll({
+            include:[{association:'userRel'}],
             order:[['created_at', 'DESC']]
         })
         .then(function(data){

@@ -39,7 +39,7 @@ store:function(req, res){
         descrip_producto: req.body.description,
       }
       Producto.create(product);
-      res.redirect('product-add')
+      res.redirect('/product')
     }
   },
   findByPk: function(req,res){

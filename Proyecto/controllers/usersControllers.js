@@ -12,6 +12,7 @@ const usersController = {
       res.render('register')
   },
   store:(req, res) => {
+  
       let errors = {};
       if (req.body.username == "") {
         errors.message = "El campo username está vacío";
@@ -41,15 +42,13 @@ const usersController = {
         let criterio = {
           where: [{ email: req.body.email }]
         }
-        Usuario.findAll(criterio)
-          .then(data => {
-            if (data != null) {
-            errors.message = "El email ya existe!";
+        Usuario.findOne(criterio)
+        .then(data=>{
+         if(data != null){
+          errors.message = "El email ya existe!";
             res.locals.errors = errors;
             res.render("register");
-            }
-          }).catch(error => console.log(error))
-
+         }else{
           let passEncriptada = bcryptjs.hashSync(req.body.password, 12);
           let user = {
             username:req.body.username,
@@ -60,7 +59,24 @@ const usersController = {
             fecha_nacimiento: req.body.birthdate
           }
           Usuario.create(user);
-          res.redirect('/register')
+          res.redirect('/login')
+
+         }
+        })
+        // Usuario.findAll(criterio)
+        //   .then(data => {
+          //   if (data != []) {
+          //     res.send(data)
+
+          //   
+          //   }else{
+          //     res.send("daefaf")
+          //    
+
+          //    }
+          //  }).catch(error => console.log(error))
+
+          
           }
     },
       login: (req, res) => {
