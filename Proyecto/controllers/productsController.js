@@ -5,7 +5,7 @@ const{Op} = require('sequelize');
 
 const productscontroller ={
   index: function(req, res,) {
-    res.send("hola")
+    res.render("product")
   },
   detalle: function(req,res){
     let id = req.params.id;
@@ -40,7 +40,7 @@ store:function(req, res){
         descrip_producto: req.body.description,
       }
       Producto.create(product);
-      res.redirect('product')
+      res.redirect('/product')
     }
   },
   findByPk: function(req,res){

@@ -1,6 +1,8 @@
 const bcryptjs = require('bcryptjs')
 const db = require('../database/models');
 const Usuario = db.User
+const session = require("express-session")
+
 const usersController = {
     profile: function(req,res){
         return res.render('profile', {users:data.user, products: data.products})
@@ -63,18 +65,6 @@ const usersController = {
 
          }
         })
-        // Usuario.findAll(criterio)
-        //   .then(data => {
-          //   if (data != []) {
-          //     res.send(data)
-
-          //   
-          //   }else{
-          //     res.send("daefaf")
-          //    
-
-          //    }
-          //  }).catch(error => console.log(error))
 
           
           }
@@ -83,12 +73,52 @@ const usersController = {
         res.render('login')
       },
       ingresar: (req, res)=> {
+        let emailForm = req.body.email
+        let passForm = req.body.password
         let errors = {};
+        
+
+        Usuario.findOne({where: [
+          {email: emailForm}
+          ]
+          })
+          .then((data) =>{
+            res.render(data)
+            if (data == undefined) {
+              return res.send = 'El email no está registrado'
+
+            } else {
+              let contraseña = data.contraseña
+              let check = bcrypt.compareSync(passForm, contraseña)
+              if (check) {
+                req.session.user = {
+                  email: data.email,
+                  usuario: data.usuario
+                }
+                // if (req.body.Recordarme != undefined) {
+                //   res.cookie('cookieRecordarme', req.session.user, {maxAge: 1000 * 60 * 5} )
+                // }
+                // return res.redirect('/')
+              } else {
+                errors.message="Contrasena incorrecta";
+                return res.render('login')
+              }
+            }
+  
+            
+          })
+          .catch((error)=>{
+            return console.log(error);
+          })
+      }
+        
+        /*let errors = {};
         let info = req.body;
         let filtro = {
           where:[{username:info.username}]
         };
         Usuario.findOne(filtro)
+        res.render(info)
         .then(result=>{
           if (result != null) {
             let check = bcryptjs.compareSync(info.password, result.password)
@@ -107,7 +137,7 @@ const usersController = {
             }
           }
         })
-        
-      }
+        */
     }
+  
 module.exports = usersController;
