@@ -4,9 +4,9 @@ const Usuario = db.User
 const session = require("express-session")
 
 const usersController = {
-    profile: function(req,res){
-        return res.render('profile', {users:data.user, products: data.products})
-    },
+  profile: function(req, res,) {
+    res.render("profile")
+  },
     editprofile: function(req,res){
         return res.render('profile-edit', {user:data.user})
     },
@@ -73,71 +73,34 @@ const usersController = {
         res.render('login')
       },
       ingresar: (req, res)=> {
-        let emailForm = req.body.email
-        let passForm = req.body.password
         let errors = {};
-        
-
-        Usuario.findOne({where: [
-          {email: emailForm}
-          ]
-          })
-          .then((data) =>{
-            res.render(data)
-            if (data == undefined) {
-              return res.send = 'El email no está registrado'
-
-            } else {
-              let contraseña = data.contraseña
-              let check = bcrypt.compareSync(passForm, contraseña)
-              if (check) {
-                req.session.user = {
-                  email: data.email,
-                  usuario: data.usuario
-                }
-                // if (req.body.Recordarme != undefined) {
-                //   res.cookie('cookieRecordarme', req.session.user, {maxAge: 1000 * 60 * 5} )
-                // }
-                // return res.redirect('/')
-              } else {
-                errors.message="Contrasena incorrecta";
-                return res.render('login')
-              }
-            }
-  
-            
-          })
-          .catch((error)=>{
-            return console.log(error);
-          })
-      }
-        
-        /*let errors = {};
-        let info = req.body;
-        let filtro = {
-          where:[{username:info.username}]
-        };
-        Usuario.findOne(filtro)
-        res.render(info)
-        .then(result=>{
-          if (result != null) {
-            let check = bcryptjs.compareSync(info.password, result.password)
-            if (check) {
-              req.session.Usuario = result.dataValues;
-              req.locals.Usuario = result.dataValues;
-              if (info.recordar) {
-                res.cookie("userId", result.dataValues.id,{maxAge:1000 *60 *10})
-              }
-              return res.redirect('/')
-            }
-            else {
-              errors.message = "La contraseña no concide.";
-              res.locals.errors = errors;
-              res.render('register')
-            }
+    let info = req.body;
+    let filtro={
+      where:[{email:info.email}]
+    };
+    User.findOne(filtro)
+    .then(result=>{
+      if(result  !=null){
+        let check = bcryptjs.compareSync(info.password, result.password);
+        if(check){
+          req.session.user = result.dataValues;
+          req.locals.user = result.dataValues;
+          if(info.rememberme){
+            res.cookie("userId",result.dataValues.id,{maxAge:1000 *60 *10})
           }
-        })
-        */
-    }
+          return res.redirect('/')
+        }
+        else{
+          
+          errors.message = "Contraseña no coincide";
+          //Asignamos a locals.error el objeto errors 
+          res.locals.errors = errors;
+          //renderizamos la vista con el error
+          res.render("addUser");
+        }
+      }
+    })
+  }
+}
   
 module.exports = usersController;

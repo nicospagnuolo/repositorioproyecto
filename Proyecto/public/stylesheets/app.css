@@ -224,17 +224,27 @@ img{
   text-align: center;
     border-radius: 5px;
 }
-
-.product-box_data {
-  padding: 15px;
-  position: relative;
+.centrar{
   display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.cajahija {
+  align-items: baseline;
+  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  border-radius: 5px;
+  background-color: black;
+  height: 500px;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 30px;
+  width: 900px;
+  text-align: center;
+}
+.box{
+  border-radius: 30px;
   background-color: #5a1717;
-  
-    
+  height: 200px;
 }
 
 .product-box_data h2 {
@@ -290,14 +300,16 @@ img{
   height: 36px;
   margin-top: 15px;
 }
-
+.url{
+  text-decoration: underline;
+}
 .product-box:hover i {
   transform: rotate(360deg);
   box-shadow: 0 0 5px var(--green);
 }
 .imagenautos{
-  max-width: 60%;
-  max-height: 60%;
+  width: 40%;
+  height: 40%;
 }
 
 /*====== Footer ======*/
