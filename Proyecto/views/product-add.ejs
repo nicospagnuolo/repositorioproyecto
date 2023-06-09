@@ -30,7 +30,8 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12">
-				<form action="" method="post">
+				<form action="/product/product-add" method="post">
+					<input type="text" name="id" hidden value="<%= user.id %>">
 					<label for="image">Imagen:</label>
 					<input type="text" id="image" name="image" placeholder="Escribe la URL" ><br><br>
 				

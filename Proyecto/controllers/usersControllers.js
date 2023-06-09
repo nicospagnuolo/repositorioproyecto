@@ -1,11 +1,11 @@
 const bcryptjs = require('bcryptjs')
 const db = require('../database/models');
 const Usuario = db.User
-const session = require("express-session")
+
 
 const usersController = {
   profile: function(req, res,) {
-    res.render("profile")
+    res.render('profile')
   },
     editprofile: function(req,res){
         return res.render('profile-edit', {user:data.user})
@@ -72,19 +72,23 @@ const usersController = {
       login: (req, res) => {
         res.render('login')
       },
+      logout:function(req,res){
+        req.session.destroy(),
+        res.clearCookie('userId'),
+        res.redirect('/')
+      },
+     
       ingresar: (req, res)=> {
         let errors = {};
-    let info = req.body;
-    let filtro={
-      where:[{email:info.email}]
-    };
-    User.findOne(filtro)
-    .then(result=>{
-      if(result  !=null){
-        let check = bcryptjs.compareSync(info.password, result.password);
-        if(check){
-          req.session.user = result.dataValues;
-          req.locals.user = result.dataValues;
+        let info = req.body;
+        let filtro={ where:[{email:info.email}]};
+        
+        Usuario.findOne(filtro)
+        .then(result=>{
+          if(result  !=null){
+            let check = bcryptjs.compareSync(info.password, result.password);
+            if(check){
+              req.session.user = result.dataValues;
           if(info.rememberme){
             res.cookie("userId",result.dataValues.id,{maxAge:1000 *60 *10})
           }

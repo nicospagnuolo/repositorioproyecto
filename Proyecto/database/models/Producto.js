@@ -1,14 +1,14 @@
 module.exports = function(sequelize,dataTypes){
     let alias = 'Producto';
     let cols={
+        imagen:{
+            type:dataTypes.STRING
+        },
         id:{
             autoIncrement:true,
             primaryKey:true,
             type:dataTypes.INTEGER
 
-        },
-        imagen:{
-            type:dataTypes.STRING
         },
         user_id:{
             type:dataTypes.INTEGER
@@ -46,6 +46,12 @@ module.exports = function(sequelize,dataTypes){
         Producto.belongsTo(models.User,{
             as:'userRel',
             foreignKey:'id'
+        }),
+        Producto.hasMany(models.Comentario,{
+            as:'comentarioRel',
+            foreignKey:'id'
+
+
         })
     }
  

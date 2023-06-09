@@ -1,20 +1,14 @@
-const db = require('../database/models/Producto');
+const db = require('../database/models');
 const Producto = db.Producto
 const{Op} = require('sequelize');
+
 
 
 const productscontroller ={
   index: function(req, res,) {
     res.render("product")
   },
-  detalle: function(req,res){
-    let id = req.params.id;
-    for (let i = 0; i < producto; i++) {
-      if(id == producto[i].id){
-        return res.render('product',{id})
-      }
-    }
-  },
+  
   add:function (req, res) {
     res.render('product-add')
 },
@@ -36,25 +30,34 @@ store:function(req, res){
    
       let product = {
         imagen:req.body.image,
+        user_id:req.body.id,
         nombre_del_producto:req.body.name,
         descrip_producto: req.body.description,
       }
+      console.log(product);
       Producto.create(product);
       res.redirect('/product')
     }
   },
-  findByPk: function(req,res){
-    let id =req.params.id;
-    let criterio = {where:{id:id}}
-    
-   Producto.findOne(criterio)
-   .then(function(data){
-    return res.render("product",{data:[data]});
-   })
-   .catch(function(err){console.log(err)})
+  // findByPk: function(req,res){
+  //   let id =req.params.id;
+  //   let criterio ={ where:[{id:id}]} 
+  //  Producto.findOne(criterio)
+  //  .then(function(data){
+  //   return res.render("product",{data:[data]});
+  //  })
+  //  .catch(function(err){console.log(err)})
 
-  },
-
+  // },
+findByPk: function(req,res, next){
+  let id = req.params.id;
+  let criterio = {where:{id:id}}
+  Producto.findOne(criterio)
+  .then(function(data){
+    return res.render("product",{data:[data]})
+  })
+  .catch(function(err){console.log(err)})
+}
     
   }
   
