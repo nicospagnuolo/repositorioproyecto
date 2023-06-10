@@ -18,7 +18,15 @@
 
 <body>
 	<header class="main-header">
-		<%- include('./partials/header')%>
+		<% if (locals.user) {%>
+			<%- include('./partials/headerLogeado')%>
+		<% }
+		else %><%- include('./partials/header') %>
+		
+		
+		
+		
+			
 	</header>
 	<!-- /Header -->
 
