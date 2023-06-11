@@ -7,7 +7,13 @@ module.exports = function(sequelize,dataTypes){
             type:dataTypes.INTEGER
 
         },
+        id_producto:{
+            type:dataTypes.STRING
+        },
         id_usuario:{
+            type:dataTypes.STRING
+        },
+        nombre_usuario:{
             type:dataTypes.STRING
         },
         texto_comentario:{

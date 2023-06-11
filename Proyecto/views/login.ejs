@@ -44,6 +44,9 @@
 					<input type="checkbox" id="recordar" name="rememberme"><br><br>
 					<input type="submit" value="Iniciar sesión">
 				  </form>
+				  <% if (locals.errors) { %>
+					<p style="color:red"> <%= errors.message %></p>
+				<% } %>
 			</h2>
 			
 

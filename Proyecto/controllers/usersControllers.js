@@ -85,22 +85,26 @@ const usersController = {
         
         Usuario.findOne(filtro)
         .then(result=>{
+          if (result == null) {
+            errors.message = "El mail no está registrado.";
+            res.locals.errors = errors;
+            res.render("login");
+          }
           if(result  !=null){
             let check = bcryptjs.compareSync(info.password, result.password);
             if(check){
               req.session.user = result.dataValues;
-          if(info.rememberme){
+            if(info.rememberme){
             res.cookie("userId",result.dataValues.id,{maxAge:1000 *60 *10})
           }
           return res.redirect('/')
         }
-        else{
-          
-          errors.message = "Contraseña no coincide";
-          //Asignamos a locals.error el objeto errors 
-          res.locals.errors = errors;
-          //renderizamos la vista con el error
-          res.render("addUser");
+            else{
+              errors.message = "La contraseña no coincide";
+              //Asignamos a locals.error el objeto errors 
+              res.locals.errors = errors;
+              //renderizamos la vista con el error
+              res.render("login");
         }
       }
     })
