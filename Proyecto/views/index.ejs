@@ -46,7 +46,7 @@
 						</figure></a>
 						<article class="box">
 							<h2><%= data[i].nombre_del_producto %></h2>
-							<p>Usuario: <a href="/profile/<%=data[i].userRel.user_id%>" class="url"> <%=data[i].userRel.email  %></p></a>
+							<p>Usuario: <a href="/users/profile/<%=data[i].userRel.id%>" class="url"> <%=data[i].userRel.email  %></p></a>
 							<p><%= data[i].descrip_producto %></p>
 						</article>
 					

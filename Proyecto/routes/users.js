@@ -4,7 +4,9 @@ var router = express.Router();
 
 const usersController = require('../controllers/usersControllers');
 
-router.get('/profile', usersController.profile)
+router.get('/profile/:id', usersController.profile)
+router.get('/profile-edit/:id', usersController.editprofile)
+router.post('/profile-edit/:id', usersController.edit)
 router.get('/register', usersController.add)
 router.post('/register', usersController.store)
 router.get('/login',usersController.login)

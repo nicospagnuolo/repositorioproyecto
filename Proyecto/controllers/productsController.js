@@ -40,7 +40,9 @@ const productscontroller ={
   },
   findByPk: function(req,res, next){
     let id = req.params.id;
-    let criterio = {where:{id:id}}
+    let criterio = 
+    {where:{id:id},
+    include:[{association:'userRel'}]}
     Producto.findOne(criterio)
     .then(function(data){
       return res.render("product",{data:[data]})

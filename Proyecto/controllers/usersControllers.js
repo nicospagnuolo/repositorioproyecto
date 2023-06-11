@@ -4,17 +4,43 @@ const Usuario = db.User
 
 
 const usersController = {
-  profile: function(req, res,) {
-    res.render('profile')
+  profile: (req,res)=>{
+    Usuario.findOne({
+        where:[{id: req.params.id}],
+        // include:[{association:'userRel'}],
+        order:[['created_at', 'DESC']]
+    })
+    .then((data)=>{
+        return res.render("profile",{data:data})
+    })
   },
-    editprofile: function(req,res){
-        return res.render('profile-edit', {user:data.user})
-    },
-    add:function (req, res) {
-      res.render('register')
+    editprofile:(req,res)=>{
+      Usuario.findOne({
+          where:[{id: req.params.id}],
+      })
+      .then((data)=>{
+          return res.render("profileedit",{data:data})
+      })
+  },
+  edit:(req, res)=>{
+    let errors = {};
+    Usuario.findOne({
+      where:[{id:req.params.id}]
+    })
+    .then((data)=>{
+      let check = bcryptjs.compareSync(req.body.contra, data.password);
+      if(check){
+        res.locals.errors = errors;
+        res.render("profileedit");
+      }else errors.message = "La contraseña es incorrecta.";
+      res.locals.errors = errors;
+      res.render("profileedit");}) 
+  },
+  
+  add:function (req, res) {
+    res.render('register')
   },
   store:(req, res) => {
-  
       let errors = {};
       if (req.body.username == "") {
         errors.message = "El campo username está vacío";
@@ -68,43 +94,42 @@ const usersController = {
 
           
           }
-    },
-      login: (req, res) => {
-        res.render('login')
-      },
-      logout:function(req,res){
-        req.session.destroy(),
-        res.clearCookie('userId'),
-        res.redirect('/')
-      },
-     
-      ingresar: (req, res)=> {
-        let errors = {};
-        let info = req.body;
-        let filtro={ where:[{email:info.email}]};
+  },
+  login: (req, res) => {
+    res.render('login')
+  },
+  logout:function(req,res){
+    req.session.destroy(),
+    res.clearCookie('userId'),
+    res.redirect('/')
+  },
+  ingresar: (req, res)=> {
+    let errors = {};
+    let info = req.body;
+    let filtro={ where:[{email:info.email}]};
         
-        Usuario.findOne(filtro)
-        .then(result=>{
-          if (result == null) {
-            errors.message = "El mail no está registrado.";
-            res.locals.errors = errors;
-            res.render("login");
-          }
-          if(result  !=null){
-            let check = bcryptjs.compareSync(info.password, result.password);
-            if(check){
-              req.session.user = result.dataValues;
-            if(info.rememberme){
-            res.cookie("userId",result.dataValues.id,{maxAge:1000 *60 *10})
-          }
-          return res.redirect('/')
-        }
-            else{
-              errors.message = "La contraseña no coincide";
+    Usuario.findOne(filtro)
+     .then(result=>{
+      if (result == null) {
+        errors.message = "El mail no está registrado.";
+        res.locals.errors = errors;
+        res.render("login");
+      }
+      if(result  !=null){
+        let check = bcryptjs.compareSync(info.password, result.password);
+        if(check){
+          req.session.user = result.dataValues;
+        if(info.rememberme){
+        res.cookie("userId",result.dataValues.id,{maxAge:1000 *60 *10})
+      }
+      return res.redirect('/')
+    }
+        else{
+            errors.message = "La contraseña no coincide";
               //Asignamos a locals.error el objeto errors 
-              res.locals.errors = errors;
+            res.locals.errors = errors;
               //renderizamos la vista con el error
-              res.render("login");
+            res.render("login");
         }
       }
     })

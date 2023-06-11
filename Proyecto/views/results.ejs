@@ -22,12 +22,7 @@
 		<% if (locals.user) {%>
 			<%- include('./partials/headerLogeado')%>
 		<% }
-		else %><%- include('./partials/header') %>
-		
-		
-		
-		
-			
+		else %><%- include('./partials/header') %>	
 	</header>
 	<!-- /Header -->
 
@@ -47,6 +42,7 @@
 						</figure>
 						<article >
 							<h2><%= data[i].nombre_del_producto %></h2>
+							<p>Usuario: <a href="/users/profile/<%=data[i].userRel.id%>" class="url"> <%=data[i].userRel.email  %></p></a>
 							<p><%= data[i].descrip_producto %></p>
 						</article>
 					</a>

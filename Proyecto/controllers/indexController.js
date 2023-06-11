@@ -25,7 +25,8 @@ const indexController = {
             ],
         };
         let criterio ={
-            where:[{nombre_del_producto:{[op.like]:"%"+busqueda+"%"}}]
+            where:[{nombre_del_producto:{[op.like]:"%"+busqueda+"%"}}],
+            include:[{association:'userRel'}]
         }
         producto.findAll(criterio)
         .then(function (data) {
