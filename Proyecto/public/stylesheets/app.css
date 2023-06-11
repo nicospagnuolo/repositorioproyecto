@@ -92,6 +92,9 @@ hr {
   width: 100px;
   height: 100px;
 }
+.bienvenida{
+  color: #39b54a;
+}
 .main-header_home-link,
 .main-header_credit-link {
   display: block;

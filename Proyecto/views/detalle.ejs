@@ -19,15 +19,12 @@
 	
 	<!-- /Header -->
 	<header class="main-header">
-		<% if (locals.user) {%>
+		<% if (locals.user != null) {%>
 			<%- include('./partials/headerLogeado')%>
-		<% }
-		else %><%- include('./partials/header') %>
-		
-		
-		
-		
-			
+		<% }%>
+		<% if (locals.user == null) {%>
+			<%- include('./partials/header')%>
+		<% }%>
 	</header>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">

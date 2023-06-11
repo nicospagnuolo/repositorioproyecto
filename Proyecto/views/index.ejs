@@ -17,10 +17,13 @@
 <body>
 	<!-- Header -->
 	<header class="main-header">
-		<% if (locals.user) {%>
+		<% if (locals.user != null) {%>
 			<%- include('./partials/headerLogeado')%>
-		<% }
-		else %><%- include('./partials/header') %>	
+			<h1 class="bienvenida">¡Bienvenido <%= user.username %>!</h1>
+		<% }%>
+		<% if (locals.user == null) {%>
+			<%- include('./partials/header')%>
+		<% }%>
 	</header>
 	<!-- /Header -->
 	
