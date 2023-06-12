@@ -4,9 +4,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="./images/logo-mercado-liebre.jpg" />
+	<link width="" rel="shortcut icon" href="./images/logo.jpeg" />
 
-	<title> Mercado Liebre Argentina</title>
+	<title>Mi Tiendita</title>
 	<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<!-- Bootstrap Grid Stylesheet -->
@@ -28,13 +28,35 @@
 	</header>
 	<% for( let i = 0; i < data.length; i++ ) { %>
 		<div class="col-12 col-sm-6 col-lg-3">
-			<section class="product-box">
+			<section class="cajahija">
+				<h1 class="nombres"><%= data[i].nombre_del_producto %></h1>
 				<a href="/product/product/<%= data[i].id %>">
 					<figure class="product-box_image">
 						<img class = 'imagenautos' src="<%= data[i].imagen %>" alt="cafetera moulinex">
 					</figure>
+					<% if (locals.user && user.id == data[i].user_id) {%>
+						<a href="/product/product-edit/<%= data[i].id %>">
+							<i class="button"> Editar producto</i>
+						</a>
+						<a href="/users/profile-edit/<%=data[i].id%>">
+							<i  class="button"> Eliminar producto</i>
+						</a>
+					<% }%>
+					<% if (locals.user && user.id != data[i].user_id) {%>
+						<button type="submit" name="like" class="button">&#128077 Me gusta</button>
+						<!-- let boton = req.body.like
+						boton.addEventListener('click', function (e) {
+						  e.preventDefault()
+						  if (boton.innerText == '&#128077 Me gusta') {
+							boton.innerText = '&#128077 Ya no gusta'
+						  }
+						  if (boton.innerText == '&#128077 Ya no gusta') {
+							boton.innerText = '&#128077 Me gusta'
+						  }
+						}) -->
+					<% }%>
 					<article >
-						<h1><%= data[i].nombre_del_producto %></h1>
+						
 						<p>Usuario: <a href="/users/profile/<%=data[i].userRel.id%>" class="url"> <%=data[i].userRel.email  %></p></a>
 						<p><%= data[i].descrip_producto %></p>
 					</article>
@@ -62,7 +84,7 @@
 			<% } %> 
 
 			<% if (locals.user == null) {%>
-				<h3 class="aviso">Debe estar logueado para comentar.</h3>
+				<h3 class="aviso">Debe estar logueado para poder comentar.</h3>
 			<% } %>
 	<% } %>
 				

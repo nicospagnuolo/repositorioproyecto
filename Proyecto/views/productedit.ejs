@@ -5,18 +5,19 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="/images/logo.jpeg" />
+	<link width="" rel="shortcut icon" href="./images/logo.jpeg" />
 
 	<title>Mi Tiendita</title>
 	<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="./css/bootstrap-grid.min.css">
 	<!-- Own Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/app.css">
 </head>
 
 <body>
+	<!-- Header -->
 	<header class="main-header">
 		<% if (locals.user != null) {%>
 			<%- include('./partials/headerLogeado')%>
@@ -26,13 +27,9 @@
 		<% }%>
 	</header>
 	<!-- /Header -->
-
+	
 	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Agregar productos</h2>
-			</div>
+		<h2 class="products-title">Editar el producto <a href="/product/product/<%= data.id %>">"<%= data.nombre_del_producto %>"</a> </h2>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12">
 				<form action="/product/product-add" method="post">
@@ -49,9 +46,14 @@
 					<input type="submit" value="Crear">
 				  </form>
 				  <% if (locals.errors) { %>
-					<p style="color:black"> <%= errors.message %></p>
+					<p style="color:red"> <%= errors.message %></p>
 				<% } %>
 			</h2>
+	<% if (locals.errors) { %>
+		<p style="color:red"> <%= errors.message %></p>
+	<% } %>
+	
+	
 
 
 	<!-- footer -->

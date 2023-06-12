@@ -8,4 +8,5 @@ router.get('/', indexController.index);
 router.get('/login', indexController.login);
 router.get('/register', indexController.register);
 router.get('/results', indexController.results);
+router.get('/resultsUser', indexController.resultsUser);
 module.exports = router;

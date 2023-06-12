@@ -22,7 +22,7 @@
 html,
 
 .aviso{
-  color: red;
+  color: rgb(15, 13, 13);
 }
 
 body {
@@ -30,7 +30,7 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
   color: white;
-  background-color: #1d1d1d;
+  background-color: rgb(230, 100, 100);
 }
 
 ul,
@@ -71,7 +71,7 @@ hr {
   padding: 15px 0;
 }
 .button {
-  background-color: #5a1717;
+  background-color: #104e94;
   border: none;
   color: white;
   padding: 12px 24px;
@@ -87,13 +87,25 @@ hr {
 .button:hover {
   background-color: #021203;
 }
+.perfiles{
+  text-decoration: underline;
+}
+
+.centrarperfil{
+  align-items: center;
+  justify-content: center;
+}
+.nombres {
+  text-decoration: underline;
+}
 .foto-perfil{
   border-radius: 50%;
   width: 100px;
   height: 100px;
 }
 .bienvenida{
-  color: #39b54a;
+  color: rgba(36, 20, 20, 0.868);
+  text-align: center;
 }
 .main-header_home-link,
 .main-header_credit-link {
@@ -243,7 +255,7 @@ img{
   align-items: baseline;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: rgb(62, 65, 130);
   height: 500px;
   margin: 10px;
   padding: 20px;
@@ -253,7 +265,7 @@ img{
 }
 .box{
   border-radius: 30px;
-  background-color: #5a1717;
+  background-color: #5649c9;
   height: 200px;
 }
 
@@ -318,8 +330,8 @@ img{
   box-shadow: 0 0 5px var(--green);
 }
 .imagenautos{
-  width: 40%;
-  height: 40%;
+  width: 200px;
+  height: 200px;
 }
 
 /*====== Footer ======*/
@@ -371,8 +383,7 @@ img{
   overflow: hidden;
 }
 .logo{
-  max-width: 150px;
-  border-radius: 90px;
+  max-width: 140px;
 }
 .product-detail-img {
   width: 70%;

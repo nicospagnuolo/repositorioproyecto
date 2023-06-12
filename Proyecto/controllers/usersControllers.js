@@ -43,19 +43,23 @@ const usersController = {
   store:(req, res) => {
       let errors = {};
       if (req.body.username == "") {
-        errors.message = "El campo username está vacío";
+        errors.message = "El campo username está vacío.";
         res.locals.errors = errors;
         res.render("register");
       } else if (req.body.email == "") {
-        errors.message = "El campo email está vacío";
+        errors.message = "El campo email está vacío.";
         res.locals.errors = errors;
         res.render("register");
       } else if (req.body.password =="") {
         errors.message = "La contraseña debe tener mas de 3 caracteres.";
         res.locals.errors = errors;
         res.render("register");
+      } else if (req.body.password != req.body.password_2) {
+        errors.message = "Las contraseñas no coinciden.";
+        res.locals.errors = errors;
+        res.render("register");
       } else if (req.body.perfil == "") {
-          errors.message = "El campo foto de perfil está vacío";
+          errors.message = "El campo foto de perfil está vacío.";
           res.locals.errors = errors;
           res.render("register");
       } else if (req.body.birthdate =="") {

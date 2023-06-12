@@ -1,70 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link width="" rel="shortcut icon" href="./images/logo.jpeg" />
-	
+
 	<title>Mi Tiendita</title>
-			<!-- Font Awesome Stylesheet -->
+	<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="./css/bootstrap-grid.min.css">
 	<!-- Own Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/app.css">
 </head>
+
 <body>
 	<!-- Header -->
 	<header class="main-header">
 		<% if (locals.user != null) {%>
 			<%- include('./partials/headerLogeado')%>
-			<h1 class="bienvenida">¡Bienvenido <%= user.username %>!</h1>
 		<% }%>
 		<% if (locals.user == null) {%>
 			<%- include('./partials/header')%>
 		<% }%>
 	</header>
 	<!-- /Header -->
-	
-	<!-- Banner -->
-	<div class="banner">
-		<img src="images/banner2.webp" alt="Banner de ofertas" >
-	</div>
-	<!-- /Banner -->
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h1 class="products-title">NOVEDADES</h1>
+				<h1 class="products-title">Resultados para tu busqueda: </h1>
 			</div>
 			<!-- Show the "ultimos" products -->
 		<% for( let i = 0; i < data.length; i++ ) { %>
-			<div class="centrar">
-				<section class="cajahija">
-					<a href="/product/product/<%= data[i].id %>">
-						<figure class="product-box_image">
-							<img class = 'imagenautos' src="<%= data[i].imagen %>" alt="cafetera moulinex">
-						</figure></a>
-						<article class="box">
-							<h2><%= data[i].nombre_del_producto %></h2>
-							<p>Usuario: <a href="/users/profile/<%=data[i].userRel.id%>" class="url"> <%=data[i].userRel.email  %></p></a>
-							<p><%= data[i].descrip_producto %></p>
-						</article>
-					
-				</section>
-			</div>
+            <section>
+			<a href="/users/profile/<%=data[i].id%>"><div class="img-container offset-3 col-2">
+                <img src="<%= data[i].foto_perfil %>" alt="foto de perfil" class="foto-perfil">
+            </div>
+            <h1 class="main-title"> <%= data[i].username %>
+            </h1></a></section>
 		<% } %>
-			
-	<!-- /Más comentados -->
-
-
 	<!-- footer -->
 	<footer class="main-footer">
 		<%- include('./partials/footer')  %>
-
 	</footer>
 	<!-- /footer -->
-</body>	
+</body>
+
 </html>

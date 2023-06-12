@@ -9,17 +9,25 @@ const productscontroller ={
   index: function(req, res,) {
     res.render("product")
   },
+  editproduct: (req,res)=>{
+    Producto.findOne({
+        where:[{id: req.params.id}],
+    })
+    .then((data)=>{
+        return res.render("productedit",{data:data})
+    })
+  },
   add:function (req, res) {
     res.render('product-add')
   },
   store:function(req, res){
       let errors = {};
       if (req.body.image == "") {
-        errors.message = "El campo imagen está vacío";
+        errors.message = "El campo imagen está vacío.";
         res.locals.errors = errors;
         res.render("product-add");
       } else if (req.body.name == "") {
-        errors.message = "El campo name está vacío";
+        errors.message = "El campo name está vacío.";
         res.locals.errors = errors;
         res.render("product-add");
       } else if (req.body.description =="") {
@@ -48,13 +56,9 @@ const productscontroller ={
       return res.render("product",{data:[data]})
     })
     .catch(function(err){console.log(err)})
-//     Comentario.findAll({
-//       include:[{association:'comentarioRel'}],
-//       order:[['created_at', 'DESC']]
-//   })
-//   .then(function(data){
-//     return res.render('product', {comentario:[data]});
-// })
+    // let criterio = 
+    // {include:[{association:'userRel'},{association:'comentarioProdu', include:[{association:'comentarioUs'}]}], where:[{id:id}]
+    // }
   },
   comentario: function(req, res){
     let errors = {};

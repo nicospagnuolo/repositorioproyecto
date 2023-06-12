@@ -29,13 +29,15 @@ module.exports = function(sequelize,dataTypes){
     
     Comentario.associate = function(models){
         Comentario.belongsTo(models.Producto,{
-            as:"comentarioRel",
-            foreignkey:"id"
+            as:"comentarioProdu",
+            foreignkey:"id_producto"
+        }),
+        Comentario.belongsTo(models.User,{
+            as:"comentarioUs",
+            foreignkey:"id_usuario"
         })
     }
 
 
         return Comentario
-
-
 }
