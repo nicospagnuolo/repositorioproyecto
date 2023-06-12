@@ -34,13 +34,17 @@
 					<figure class="product-box_image">
 						<img class = 'imagenautos' src="<%= data[i].imagen %>" alt="cafetera moulinex">
 					</figure>
+					<br>
 					<% if (locals.user && user.id == data[i].user_id) {%>
 						<a href="/product/product-edit/<%= data[i].id %>">
 							<i class="button"> Editar producto</i>
 						</a>
-						<a href="/users/profile-edit/<%=data[i].id%>">
-							<i  class="button"> Eliminar producto</i>
-						</a>
+					</a>
+					<a href="/">
+						<i class="button"> Eliminar producto</i>
+					</a>
+							
+						
 					<% }%>
 					<% if (locals.user && user.id != data[i].user_id) {%>
 						<button type="submit" name="like" class="button">&#128077 Me gusta</button>

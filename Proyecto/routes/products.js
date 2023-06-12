@@ -9,6 +9,7 @@ router.get('/product/:id', productscontroller.findByPk);
 router.get('/product-add', productscontroller.add);
 router.post('/product-add',productscontroller.store)
 router.post('/product-add',productscontroller.comentario)
-//router.get('/detalle/:id',productscontroller)
-
+router.post('/update/:id',productscontroller.update)
+router.get('/update/:id',productscontroller.actualizar)
+router.post('/delete',productscontroller.delete)
 module.exports = router;

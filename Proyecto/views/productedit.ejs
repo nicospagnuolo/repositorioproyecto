@@ -32,18 +32,18 @@
 		<h2 class="products-title">Editar el producto <a href="/product/product/<%= data.id %>">"<%= data.nombre_del_producto %>"</a> </h2>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12">
-				<form action="/product/product-add" method="post">
+				<form action="/product/update/<%= data.id %>" method="post">
 					<input type="text" name="id" hidden value="<%= user.id %>">
 					<label for="image">Imagen:</label>
-					<input type="text" id="image" name="image" placeholder="Escribe la URL" ><br><br>
+					<input type="text" id="image" name="image" placeholder="<%= data.imagen %>" ><br><br>
 				
 					<label for="name">Nombre:</label>
-					<input type="text" id="name" name="name" placeholder="Nombre del producto"><br><br>
+					<input type="text" id="name" name="name" placeholder="<%= data.nombre_del_producto %>"><br><br>
 					
 					<label for="description">Descripción:</label>
-					<textarea id="description" name="description" placeholder="Descripcion del producto"></textarea><br><br>
+					<textarea id="description" name="description" placeholder="<%= data.descrip_producto %>"></textarea><br><br>
 				
-					<input type="submit" value="Crear">
+					<input type="submit" value="Editar">
 				  </form>
 				  <% if (locals.errors) { %>
 					<p style="color:red"> <%= errors.message %></p>

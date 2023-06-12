@@ -103,9 +103,10 @@ const usersController = {
     res.render('login')
   },
   logout:function(req,res){
-    req.session.destroy(),
-    res.clearCookie('userId'),
-    res.redirect('/')
+    req.session.destroy();
+    res.clearCookie('userId');
+    res.clearCookie('connect.sid');
+    return res.redirect('/');
   },
   ingresar: (req, res)=> {
     let errors = {};

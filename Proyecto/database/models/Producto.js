@@ -46,10 +46,10 @@ module.exports = function(sequelize,dataTypes){
         Producto.belongsTo(models.User,{
             as:'userRel',
             foreignKey:'user_id'
-        }),
+        });
         Producto.hasMany(models.Comentario,{
             as:'comentarioProdu',
-            foreignKey:'id'
+            foreignKey:'id_producto'
         })
     }
  

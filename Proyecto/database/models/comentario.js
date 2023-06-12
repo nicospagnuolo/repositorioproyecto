@@ -8,15 +8,18 @@ module.exports = function(sequelize,dataTypes){
 
         },
         id_producto:{
-            type:dataTypes.STRING
+            type:dataTypes.INTEGER
         },
         id_usuario:{
-            type:dataTypes.STRING
+            type:dataTypes.INTEGER
         },
         nombre_usuario:{
             type:dataTypes.STRING
         },
         texto_comentario:{
+            type:dataTypes.STRING
+        },
+        claves:{
             type:dataTypes.STRING
         }
     };
