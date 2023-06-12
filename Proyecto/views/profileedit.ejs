@@ -27,41 +27,35 @@
 		<% }%>
 	</header>
 	<!-- /Header -->
-	<h2>Ingresá tu contraseña:</h2>
-	<form action="" method="post">
-		<label for="password">Contraseña:</label>
-		<input type="password" id="password" name="contra"><br>
-
-		<input type="submit" value="Validar">
-	</form>
+	
 	<!-- Novedades -->
-	<% if (locals.errors && errors == {}) { %>
 		<h2 class="products-title">Editar mi perfil</h2>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> 
-				<form action="" method="GET">
-					<label for="email">Email:</label>
-					<input type="email" id="email" name="email" required><br>
-				  
-					<label for="username">Usuario:</label>
-					<input type="text" id="username" name="username" required><br>
-				  
-					<label for="password">Contraseña:</label>
-					<input type="password" id="password" name="password" required><br>
-				  
-					<label for="date">Fecha:</label>
-					<input type="date" id="date" name="date" required><br>
-				  
-					<label for="id">ID:</label>
-					<input type="text" id="id" name="id" required><br>
-				  
-					<input type="submit" value="Enviar">
-				  </form>
-			</h2>
-	<% } %>
-	<% if (locals.errors) { %>
-		<p style="color:red"> <%= errors.message %></p>
-	<% } %>
+            <!-- Show the "ultimos" products -->
+            <h2 class="col-12"> 
+                <form action="/users/update/<%= user.id %>" method="post">
+                    <input type="text" name="id" hidden value="<%= user.id %>">
+                    <label for="email">Email:</label>
+                    <input type="email"  name="email" placeholder="<%= data.email %>"><br>
+                   <br>
+                    <label for="username">Nombre de usuario:</label>
+                    <input type="text" name="username" placeholder="<%= data.username %>"><br>
+                    <br>
+                    <label for="birthdate">Fecha de nacimiento:</label>
+                    <input type="date"  name="birthdate"><br>
+                    <br>
+                    <label for="id">DNI:</label>
+                    <input type="text"  name="dni" placeholder="<%= data.dni %>"><br>
+                    <br>
+                    <label for="username">Foto de perfil:</label>
+                    <input type="text"  name="perfil" placeholder="<%= data.foto_perfil %>"><br>
+                    <br>
+                    <input type="submit" value="Editar">
+                  </form>
+            </h2>
+    <% if (locals.errors) { %>
+        <p style="color:red"> <%= errors.message %></p>
+    <% } %>
 	
 	
 

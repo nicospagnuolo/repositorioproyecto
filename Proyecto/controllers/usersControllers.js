@@ -138,7 +138,20 @@ const usersController = {
         }
       }
     })
-  }
+  }, 
+  update:function(req,res){
+  Usuario.update( {
+    username:req.body.username,
+    email:req.body.email,
+    foto_perfil: req.body.perfil,
+    dni: req.body.dni,
+    fecha_nacimiento: req.body.birthdate
+  },{where:{id:req.params.id}})
+  return res.redirect('/')
+  },
+  actualizar:function (res) {
+    return res.render("profile");
+    }
 }
   
 module.exports = usersController;

@@ -12,6 +12,21 @@
   --green: #39b54a;
   --base-font-family: 'Roboto', sans-serif
 }
+.button_editar{
+  font-family: "Font Awesome 5 Free";
+  background-color: #104e94;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.3s ease-out;
+}
 
 
 /*====== Basics ======*/
