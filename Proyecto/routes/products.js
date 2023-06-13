@@ -12,4 +12,5 @@ router.post('/product-add',productscontroller.comentario)
 router.post('/update/:id',productscontroller.update)
 router.get('/update/:id',productscontroller.actualizar)
 router.post('/delete',productscontroller.delete)
+router.post('/coment-add',productscontroller.newcoment)
 module.exports = router;

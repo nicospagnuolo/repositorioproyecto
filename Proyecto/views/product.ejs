@@ -80,11 +80,17 @@
 				</article>
 
 			</section>
-			<% if (locals.user) {%>
-				<form class="form" action="/product/product/<%=data[i].id  %>" method="post">
-					<input class="form-input" type="text" value="" placeholder="Escribí tu comentario">
-					<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+			<% if (locals.user && user.id != data[i].user_id) {%>
+				<form class="form" action="/product/coment-add" method="post">
+					<input type="text"  id="user_id" name="user_id" hidden value="<%= user.id %>">
+					<input type="text" id="product_id" name="product_id" hidden value="<%= data[i].id%>">
+					<input type="text" id="nombre" name="nombre" hidden value="<%= user.username%>">
+					<input class="form-input" type="text" id="comentario" name="comentario" placeholder="Escribí tu comentario">
+					<input type="submit" value="AGREGAR COMENTARIO" class="button">
 				</form>
+				<% if (locals.errors) { %>
+					<p style="color:black"> <%= errors.message %></p>
+				<% } %>
 			<% } %> 
 
 			<% if (locals.user == null) {%>

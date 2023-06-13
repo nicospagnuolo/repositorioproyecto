@@ -17,6 +17,23 @@ const productscontroller = {
   add: function (req, res) {
     res.render("product-add");
   },
+  newcoment:function (req, res) {
+    let errors = {};
+    if (req.body.comentario == "") {
+      errors.message = "El campo comentario está vacío.";
+      res.locals.errors = errors;
+      res.render("/");
+    } else {
+      let comentario = {
+        id_producto: req.body.product_id,
+        id_usuario: req.body.user_id,
+        nombre_usuario: req.body.nombre,
+        texto_comentario: req.body.comentario,
+      };
+      Comentario.create(comentario);
+      res.redirect("/");
+    }
+  },
   store: function (req, res) {
     let errors = {};
     if (req.body.image == "") {

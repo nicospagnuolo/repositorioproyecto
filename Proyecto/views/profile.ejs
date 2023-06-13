@@ -46,8 +46,9 @@
 							</a>
 						</h1>
 			<% }%>
-			<br>
-					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
+			<% if (locals.user && user.id != data.id) {%>
+				<a class="btn mt-3 ml-4" href="">SEGUIR</a>
+			<% }%>
 				</div>
 				<div>
 					<ul class="">

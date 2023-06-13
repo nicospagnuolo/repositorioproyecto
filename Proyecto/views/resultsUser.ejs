@@ -35,6 +35,9 @@
 				<h1 class="products-title">Resultados para tu busqueda: </h1>
 			</div>
 			<!-- Show the "ultimos" products -->
+			<% if (data.length == 0) { %>
+        <h2 style="color:black"> No exite ningún usuario para tu búsqueda</h2>
+		<% } %>
 		<% for( let i = 0; i < data.length; i++ ) { %>
             <section>
 			<a href="/users/profile/<%=data[i].id%>"><div class="img-container offset-3 col-2">

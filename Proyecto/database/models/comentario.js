@@ -21,6 +21,18 @@ module.exports = function(sequelize,dataTypes){
         },
         claves:{
             type:dataTypes.STRING
+        },
+        created_at:{
+            type:dataTypes.DATE,
+            allowNull: true
+        },
+        updated_at:{
+            type:dataTypes.DATE,
+            allowNull: true
+        },
+        deleted_at:{
+            type:dataTypes.DATE,
+            allowNull: true
         }
     };
     let config={
