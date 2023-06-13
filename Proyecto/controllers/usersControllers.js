@@ -1,19 +1,19 @@
 const bcryptjs = require('bcryptjs')
 const db = require('../database/models');
-const Usuario = db.User
+const Usuario = db.User;
+const producto = db.Producto;
 
 
 const usersController = {
-  profile: (req,res)=>{
-    Usuario.findOne({
-        where:[{id: req.params.id}],
-        // include:[{association:'userRel'}],
+  profile: function(req, res) {
+    producto.findAll({
+        include:[{association:'userRel'}],
+        where:[{user_id: req.params.id}],
         order:[['created_at', 'DESC']]
     })
-    .then((data)=>{
-        return res.render("profile",{data:data})
-    })
-  },
+    .then(function(data){
+      return res.render('profile', { data });
+  })},
     editprofile:(req,res)=>{
       Usuario.findOne({
           where:[{id: req.params.id}],
