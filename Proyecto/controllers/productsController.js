@@ -96,13 +96,29 @@ const productscontroller = {
   actualizar:function (req, res) {
     return res.render("product");
   },
-  delete:function(req,res){
-    
-    Producto.destroy( 
-    {where:{id:req.params.id}}
-    )
+  delete:async function(req,res){
+    const user = await Producto.findOne({
+      where: {
+        id:req.params.id
+      },
+   });
+   await user.destroy();
+    // Producto.destroy( 
+    // {where:{id:req.params.id}}
+    // )
     return res.redirect('/')
   },
+  lista: function(req,res){
+    let criterio = {
+      where: { id: id },
+      include: [
+        { association: "userRel"}]}
+  ;
+    Producto.findAll(criterio)
+    .then (function(data){
+      return res.render('profile',{data:[data]})
+    })
+  }
   // lista:function(req,res){
 
     
