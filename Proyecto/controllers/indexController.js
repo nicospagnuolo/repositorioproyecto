@@ -22,6 +22,8 @@ const indexController = {
         let busqueda =req.query.search;
         let criterio ={
             where:[{nombre_del_producto:{[op.like]:"%"+busqueda+"%"}}],
+            where:[{descrip_producto:{[op.like]:"%"+busqueda+"%"}}],
+
             include:[{association:'userRel'}], 
             order:[['created_at', 'DESC']]
         }
@@ -35,6 +37,7 @@ const indexController = {
         let busqueda =req.query.search2;
         let criterio ={
             where:[{username:{[op.like]:"%"+busqueda+"%"}}],
+
             
         }
         usuario.findAll(criterio)
