@@ -6,7 +6,7 @@
 :root {
   --yellow: #EAC926;
   --dark-blue: #03264C;
-  --light-blue: #1259c3;
+  --light-blue: #4a4f58;
   --gray: #666666;
   --light-gray: #ebebeb;
   --green: #39b54a;
@@ -14,7 +14,7 @@
 }
 .button_editar{
   font-family: "Font Awesome 5 Free";
-  background-color: #104e94;
+  background-color: #505459;
   border: none;
   color: white;
   padding: 12px 24px;
@@ -45,7 +45,7 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
   color: white;
-  background-color: rgb(230, 100, 100);
+  background-color: rgb(0, 0, 0);
 }
 
 ul,
@@ -86,17 +86,17 @@ hr {
   padding: 15px 0;
 }
 .button {
-  background-color: #104e94;
+  background-color: #434a51;
   border: none;
   color: white;
-  padding: 12px 24px;
+  padding: 22px 24px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 5px;
   transition: background-color 0.3s ease-out;
 }
 .button:hover {
