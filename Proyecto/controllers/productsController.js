@@ -113,16 +113,12 @@ const productscontroller = {
   actualizar:function (req, res) {
     return res.render("product");
   },
-  delete:async function(req,res){
-    const user = await Producto.findOne({
+  delete: function(req,res){
+    Producto.findOne({
       where: {
         id:req.params.id
       },
-   });
-   await user.destroy();
-    // Producto.destroy( 
-    // {where:{id:req.params.id}}
-    // )
+   })
     return res.redirect('/')
   },
   lista: function(req,res){

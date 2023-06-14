@@ -48,6 +48,22 @@ app.use(function (req,res,next) {
     return next();
 })
 
+app.use(function(req, res, next) {
+  if (req.cookies.cookieUsuario != undefined && req.session.user == undefined) {
+      let idUsuarioEnCookie = req.cookies.cookieUsuario.id;
+      db.Usuario.findByPk(idUsuarioEnCookie)
+      .then((user) => {
+        req.session.user = user;
+        res.locals.usuario  = user.usuario;
+        return next();
+      }).catch((err) => {
+        console.log(err);
+        return next();
+      });
+  } else {
+    return next();
+  }
+});
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/product', productRouter);
