@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link width="" rel="shortcut icon" href="./images/logo.jpeg" />
 
-	<title>CSC</title>
+	<title>Tecnomundi</title>
 	<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<!-- Bootstrap Grid Stylesheet -->
@@ -26,43 +26,30 @@
 			<%- include('./partials/header')%>
 		<% }%>
 	</header>
-	<% for( let i = 0; i < data.length; i++ ) { %>
 		<div class="col-12 col-sm-6 col-lg-3">
 			<section class="cajahija">
-				<h1 class="nombres"><%= data[i].nombre_del_producto %></h1>
-				<a href="/product/product/<%= data[i].id %>">
+				<h1 class="nombres"><%= data.nombre_del_producto %></h1>
+				<a href="/product/product/<%= data.id %>">
 					<figure class="product-box_image">
-						<img class = 'imagenautos' src="<%= data[i].imagen %>" alt="cafetera moulinex">
+						<img class = 'imagenautos' src="<%= data.imagen %>" alt="cafetera moulinex">
 					</figure>
 					<br>
-					<% if (locals.user && user.id == data[i].user_id) {%>
-						<a href="/product/product-edit/<%= data[i].id %>">
+					<% if (locals.user && user.id == data.user_id) {%>
+						<a href="/product/product-edit/<%= data.id %>">
 							<i class="button"> Editar producto</i>
+							</a>
 						</a>
-					</a>
-					<a href="/">
-						<i class="button"> Eliminar producto</i>
-					</a>
-							
-						
-					<% }%>
-					<% if (locals.user && user.id != data[i].user_id) {%>
+						<a href="/">
+							<i class="button"> Eliminar producto</i>
+						</a>
+					<% } %>
+					<% if (locals.user && user.id != data.user_id) {%>
 						<button type="submit" name="like" class="button">&#128077 Me gusta</button>
-						<!-- let boton = req.body.like
-						boton.addEventListener('click', function (e) {
-						  e.preventDefault()
-						  if (boton.innerText == '&#128077 Me gusta') {
-							boton.innerText = '&#128077 Ya no gusta'
-						  }
-						  if (boton.innerText == '&#128077 Ya no gusta') {
-							boton.innerText = '&#128077 Me gusta'
-						  }
-						}) -->
 					<% }%>
 					<article >
 						
-						<p>Usuario: <a href="/users/profile/<%=data[i].userRel.id%>" class="url"> <%=data[i].userRel.email  %></p></a>
-						<p><%= data[i].descrip_producto %></p>
+						<p>Usuario: <a href="/users/profile/<%=data.userRel.id%>" class="url"> <%=data.userRel.email  %></p></a>
+						<p><%= data.descrip_producto %></p>
 					</article>
 				</a>
 			</section>
@@ -70,20 +57,23 @@
 		<div class="col-12 col-lg-4">
 			<h2>COMENTARIOS:</h2>
 			<section class="comments">
-				<article>
-					<img src="https://via.placeholder.com/35" alt="">
-					<div class="data">
-						<p class="user">
-							<strong> <a href="profile.html">Pablo: </a> </strong>
-							Que buen auto</p>
-					</div>
-				</article>
+				<% for( let i = 0; i < data.comentarioProdu.length; i++ ) { %>
+					<article>
+						<img src="https://via.placeholder.com/35" alt="">
+						<div class="data">
+							<p class="user">
+								<strong> <a href="/users/profile/<%= data.comentarioProdu[i].id %>"><%= data.comentarioProdu[i].nombre_usuario %>: </a> </strong>
+								<%= data.comentarioProdu[i].texto_comentario %></p>
+						</div>
+					</article>
+				<% } %>
+				
 
 			</section>
-			<% if (locals.user && user.id != data[i].user_id) {%>
+			<% if (locals.user && user.id != data.user_id) {%>
 				<form class="form" action="/product/coment-add" method="post">
 					<input type="text"  id="user_id" name="user_id" hidden value="<%= user.id %>">
-					<input type="text" id="product_id" name="product_id" hidden value="<%= data[i].id%>">
+					<input type="text" id="product_id" name="product_id" hidden value="<%= data.id%>">
 					<input type="text" id="nombre" name="nombre" hidden value="<%= user.username%>">
 					<input class="form-input" type="text" id="comentario" name="comentario" placeholder="Escribí tu comentario">
 					<input type="submit" value="AGREGAR COMENTARIO" class="button">
@@ -96,7 +86,7 @@
 			<% if (locals.user == null) {%>
 				<h3 class="aviso">Debe estar logueado para poder comentar.</h3>
 			<% } %>
-	<% } %>
+	
 				
 				
 					

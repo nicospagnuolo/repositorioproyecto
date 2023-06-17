@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link width="" rel="shortcut icon" href="./images/logo.jpeg" />
 
-	<title>CSC</title>
+	<title>Tecnomundi</title>
 	<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<!-- Bootstrap Grid Stylesheet -->
@@ -36,7 +36,7 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<% if (data.length == 0) { %>
-				<h2 style="color:black"> No existe ningún producto para tu búsqueda</h2>
+				<h2 style="color:red"> No existe ningún producto para tu búsqueda</h2>
 				<% } %>
 		<% for( let i = 0; i < data.length; i++ ) { %>
 			<div class="col-12 col-sm-6 col-lg-3">

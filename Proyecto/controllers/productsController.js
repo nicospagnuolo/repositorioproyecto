@@ -62,25 +62,23 @@ const productscontroller = {
   findByPk: function (req, res, next) {
     let id = req.params.id;
     let criterio = {
-        where: { id: id },
-        include: [
-          { association: "userRel"}]}
-    ;
+      where: { id: id },
+      include: [
+        { association: "userRel"},
+        { association: "comentarioProdu"}
+      ]
+    };
     Producto.findOne(criterio)
       .then(function (data) {
         
-        return res.render("product", { data: [data] });
+        // return res.send(data)
+        return res.render("product", { data: data });
       })
       .catch(function (err) {
         console.log(err);
       });
  
-    // let criterio = {
-    //   where: { id: id },
-    //   include: [
-    //     { association: "comentarioProdu", include: [{ association: "comentarioUs" } ]}
-    //   ]
-    // }
+    
   },
   comentario: function (req, res) {
     let errors = {};
